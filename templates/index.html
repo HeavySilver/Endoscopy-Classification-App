@@ -1,0 +1,25 @@
+<center>
+<h1> Predict the Endoscopic Image! </h1>
+
+<h2>Upload an image of one of the following 8 categories:</h2>
+<p>Dyed-lifted-polyps
+<br>Dyed-resection-margins
+<br>Esophagitis
+<br>Normal-cecum
+<br>Normal-pylorus
+<br>Normal-z-line
+<br>Polyps
+<br>Ulcerative-colitis
+</p>
+
+<h3>After uploading hit predict. </h3>
+ 
+<form method="POST" enctype="multipart/form-data" action="{{url_for('predict')}}">
+    <input type="file" name="image" required>
+    <input type="submit" value="Predict">
+</form>
+</center>
+
+
+
+

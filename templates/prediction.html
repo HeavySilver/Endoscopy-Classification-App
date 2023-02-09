@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Endoscopic Image Viewer</title>
+    <style>
+      /* Style the navigation bar */
+      .navbar {
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        background-color: #333;
+        color: white;
+      }
+
+      /* Style the main content area */
+      .main-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+
+      .image {
+        margin: 10px;
+        width: 600px;
+        height: 600px;
+        text-align: center;
+      }
+
+    </style>
+ </head>
+ <body>
+    <!-- Navigation bar -->
+    <div class="navbar">
+      <h1>Endoscopic Image Viewer</h1>
+    </div>
+<center>
+<h1> This is:</h1>
+
+<div class="image">
+<img src="{{uri}}" alt="Predicted Image" style="width: 100%;">
+</div>
+
+<a href="{{ url_for('index') }}">Return to main page</a>
+
+</center>

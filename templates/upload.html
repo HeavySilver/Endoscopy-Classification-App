@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Endoscopic Image Viewer</title>
+<style>
+.navbar {
+	display: flex;
+    justify-content: center;
+    padding: 20px;
+    background-color: #3216;
+    color: white;
+}
+
+.images-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+.image {
+  margin: 10px;
+  width: 300px;
+  height: 300px;
+  text-align: center;
+    }
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+    }
+</style>
+</head>
+<body>
+
+<!-- Navigation bar -->
+<div class="navbar">
+<h1>Endoscopic Image Viewer</h1>
+</div>
+
+<center>
+<h2>Use this app to predict one of the following 8 categories:</h2>
+</center>
+
+<br>
+<br>
+<br>
+
+<div class="images-container">
+  {% for image in images %}
+  <div class="image">
+    <img src="{{ url_for('static', filename=image['src']) }}" alt="{{ image['label'] }}">
+    <p>{{ image['label'] }}</p>
+  </div>
+  {% endfor %}
+</div>
+
+<br>
+<br>
+<br>
+<br>
+
+<center>
+<h1>Upload your image below:</h1>
+<form method="POST" enctype="multipart/form-data" action="{{url_for('predict')}}">
+<input type="file" name="image" required>
+<input type="submit" value="Predict">
+</form>
+</center>
+
+</body>
+</html>
