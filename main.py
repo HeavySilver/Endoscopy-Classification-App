@@ -46,7 +46,7 @@ def predict():
     image = np.array(image).astype('float32')/255.0
     image = image.reshape(-1, 128, 160, 3)
 
-    model = keras.models.load_model('/home/HeavySilver/Flaskapp691/endoscopy_modelv2.h5')
+    model = keras.models.load_model('/home/HeavySilver/Flaskapp691/endoscopy_modelv4.h5')
     pred = np.argmax(model.predict(image))
 
     class_names = ['dyed-lifted-polyps', 'dyed-resection-margins', 'esophagitis', 'normal-cecum',
