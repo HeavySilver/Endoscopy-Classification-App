@@ -33,7 +33,7 @@ def index():
 def predict():
     image = request.files['image']
     image = Image.open(image)
-    image = image.resize((170, 136))
+    image = image.resize((160, 128))
     image = np.array(image)
     image = cv2.cvtColor(image, cv2.COLOR_BGR2YCrCb)
     image[0, :, :] = cv2.equalizeHist(image[0, :, :])
@@ -44,9 +44,9 @@ def predict():
     image = image.quantize(colors=256)
     image = image.convert('RGB')
     image = np.array(image).astype('float32')/255.0
-    image = image.reshape(-1, 136, 170, 3)
+    image = image.reshape(-1, 128, 160, 3)
 
-    model = keras.models.load_model('/home/HeavySilver/flaskapp691/endoscopy_modelv2.h5')
+    model = keras.models.load_model('/home/HeavySilver/Flaskapp691/endoscopy_modelv2.h5')
     pred = np.argmax(model.predict(image))
 
     class_names = ['dyed-lifted-polyps', 'dyed-resection-margins', 'esophagitis', 'normal-cecum',
@@ -67,4 +67,3 @@ def predict():
 
 if __name__ == '__main__':
     app.run(debug=True)
-
