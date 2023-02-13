@@ -41,12 +41,12 @@ def predict():
     image[:, :, 0] = cv2.equalizeHist(image[:, :, 0])
     image = cv2.cvtColor(image, cv2.COLOR_YCrCb2BGR)
     image = Image.fromarray(image, mode='RGB')
-    image = image.quantize(colors=256)
+    image = image.quantize(kmeans=4)
     image = image.convert('RGB')
     image = np.array(image).astype('float32')/255.0
     image = image.reshape(-1, 128, 160, 3)
 
-    model = keras.models.load_model('/home/HeavySilver/Flaskapp691/endoscopy_modelv4.h5')
+    model = keras.models.load_model('/home/HeavySilver/Flaskapp691/endoscopy_modelv5.h5', compile=False)
     pred = np.argmax(model.predict(image))
 
     class_names = ['dyed-lifted-polyps', 'dyed-resection-margins', 'esophagitis', 'normal-cecum',
